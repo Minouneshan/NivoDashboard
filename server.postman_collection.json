@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9949f9ea-7ac3-4b6c-a0a3-01d4f48506f6",
+		"_postman_id": "id",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -21,7 +21,7 @@
 					"raw": "{   \n    \"user_id\": \"435353\",\n    \"time\":22342424\n\n}"
 				},
 				"url": {
-					"raw": "http://116.203.204.171/get_token",
+					"raw": "http://ip/get_token",
 					"protocol": "http",
 					"host": [
 						"116",
@@ -52,7 +52,7 @@
 					"raw": "{\"user_id\":\"ah\",\"timestamp\":1565683185}"
 				},
 				"url": {
-					"raw": "http://116.203.204.171/page_view",
+					"raw": "http://ip/page_view",
 					"protocol": "http",
 					"host": [
 						"116",
@@ -83,7 +83,7 @@
 					"raw": "{ \"token\":\"542d4746-d323-11e9-8ced-960000300422\",\n  \"event_name\": \"home_page\",\n  \"time\":123123123\n}"
 				},
 				"url": {
-					"raw": "http://116.203.204.171/sample/event",
+					"raw": "http://ip/sample/event",
 					"protocol": "http",
 					"host": [
 						"116",
@@ -115,7 +115,7 @@
 					"raw": "{ \"token\":\"542d4746-d323-11e9-8ced-960000300422\",\n  \"button_name\": \"home_page\",\n  \"time\":123123123\n}"
 				},
 				"url": {
-					"raw": "http://116.203.204.171/sample/button",
+					"raw": "http://ip/sample/button",
 					"protocol": "http",
 					"host": [
 						"116",
@@ -147,7 +147,7 @@
 					"raw": "{ \"data\" : [ \n  {\"api\" : \"page_view\" , \"data\" : \n{\n  \"token\":\"e107ed5c-d179-11e9-8990-fa163ea99e55\",\n  \"page_name\": \"home_page\",\n  \"time\":123123123\n}},\n  {\"api\" : \"button_click\" , \"data\" : \n{\n  \"token\":\"e107ed5c-d179-11e9-8990-fa163ea99e55\",\n  \"button_name\":\"read_bank_masseges\",\n  \"time\":123123123\n}},\n  {\"api\" : \"event\" , \"data\" : \n{\n  \"token\":\"e107ed5c-d179-11e9-8990-fa163ea99e55\",\n  \"event_name\": \"click_notif_8pm\",\n  \"time\":123123123,\n  \"metadata\":\"\"\n}}\n\n] }"
 				},
 				"url": {
-					"raw": "http://116.203.204.171/batch_insertion",
+					"raw": "http://ip/batch_insertion",
 					"protocol": "http",
 					"host": [
 						"116",
