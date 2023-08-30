@@ -1,0 +1,34 @@
+#buttonclick
+.0 create table user_button_click(token UUID,button_name  String, time  Date) engine=MergeTree(time,time,8192) ;
+
+.1 create table user_button_click(created_at DateTime DEFAULT now(),token UUID,button_name  String, time  Date) engine=MergeTree(time,time,8192) ;
+
+.2 create table user_button_click(created_at DateTime DEFAULT now(),token UUID,button_name  String, datetime  Date,time DateTime) engine=MergeTree(datetime,datetime,8192) ;
+
+.3 create table user_button_click(token UUID,button_name  String, datetime  Date,time DateTime,created_at DateTime DEFAULT now()) engine=MergeTree(datetime,datetime,8192) ;
+#pageview
+.0 create table user_page_view(token UUID,page_name  String, time  Date) engine=MergeTree(time,time,8192) ;
+
+.1 create table user_page_view(created_at DateTime DEFAULT now(),token UUID,page_name  String, time  Date) engine=MergeTree(time,time,8192) ;
+
+.2 create table user_page_view(created_at DateTime DEFAULT now(),token UUID,page_name  String,datetime  Date,time DateTime) engine=MergeTree(datetime,datetime,8192) ;
+
+.3 create table user_page_view(token UUID,page_name  String,datetime  Date,time DateTime, created_at DateTime DEFAULT now()) engine=MergeTree(datetime,datetime,8192) ;
+
+#event
+.0 create table user_event(token UUID,event_name  String, time  Date, metadata String) engine=MergeTree(time,time,8192) ;
+
+.1 create table user_event(created_at DateTime DEFAULT now(),token UUID,event_name  String, time  Date, metadata String) engine=MergeTree(time,time,8192) ;
+
+.2 create table user_event(created_at DateTime DEFAULT now(),token UUID,event_name  String, datetime  Date,time DateTime, metadata String) engine=MergeTree(datetime,datetime,8192) ;
+
+.3 create table user_event(token UUID,event_name  String, datetime  Date,time DateTime, metadata String, created_at DateTime DEFAULT now()) engine=MergeTree(datetime,datetime,8192) ;
+
+#gettoken
+.0 create table user_get_token(token UUID, user_id String,device_model String, time Date, os String,os_version String, app_version String, package_name String,metadata   String )  engine=MergeTree(time,time,8192) ;
+
+.1 create table user_get_token(created_at DateTime DEFAULT now(),token UUID, user_id String,device_model String,time Date, os String,os_version String, app_version String, package_name String,metadata   String )  engine=MergeTree(time,time,8192) ;
+
+.2 create table user_get_token(created_at DateTime DEFAULT now(),token UUID, user_id String,device_model String,datetime  Date,time DateTime, os String,os_version String, app_version String, package_name String,metadata   String )  engine=MergeTree(datetime,datetime,8192) ;
+
+.3 create table user_get_token(token UUID, user_id String,device_model String,datetime  Date,time DateTime, os String,os_version String, app_version String, package_name String,metadata   String, created_at DateTime DEFAULT now() )  engine=MergeTree(datetime,datetime,8192) ;
