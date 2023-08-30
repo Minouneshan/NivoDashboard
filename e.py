@@ -1,6 +1,8 @@
+'''
+event
+'''
 
-#2
-# consumer
+# event
 from clickhouse_driver import Client
 from kafka import KafkaConsumer, TopicPartition
 import json
