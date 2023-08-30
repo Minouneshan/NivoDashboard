@@ -1,4 +1,12 @@
-# producer
+# main
+
+'''
+    main.py
+        This is our main Python app where we use Flask as the web framework, ClickHouse SQL as our database, and Apache Kafka as our
+        messaging system.
+        
+'''
+
 import json
 from datetime import datetime
 import sys
@@ -6,29 +14,34 @@ from flask import Flask, jsonify, abort, make_response, request, url_for
 import uuid
 from kafka import SimpleProducer, KafkaClient
 from flask_clickhouse import ClickHouse
+
+# Initializing Flask  
 sample = Flask(__name__)
+
+# Connecting to ClickHouse
 sample.config['CLICKHOUSE_USER'] = 'default'
 sample.config['CLICKHOUSE_PASSWORD'] = 'password'
 sample.config['CLICKHOUSE_DATABASE'] = 'V1'
 sample.config['CLICKHOUSE_HOST'] = 'localhost'
 ch = ClickHouse(sample)
 
+# Connecting to Kafka server
 try:
 
     Kafka = KafkaClient('localhost:9092')
     producer = SimpleProducer(Kafka)
 except:
-    print("error in creating clientntt", file=sys.stdout)
+    print("error in creating client", file=sys.stdout)
     f = open("err.txt", "w+")
     f.write("error happened")
     f.close()
 
-
+# For trial purpose
 @sample.route("/")
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
 
-
+# Getting a token for each user session
 @sample.route('/api/v1/get_token', methods=['POST'])
 def user_get_token():
     if not request.json or not 'user_id' in request.json:
@@ -65,7 +78,7 @@ def user_get_token():
         return jsonify({'status': 0,
                         'data': ''})
 
-
+# If there is a series of sessions that the user is not online or unable to sync with the app, we get a batch of tokens for each of the sessions
 @sample.route('/api/v1/get_token_batch_insertion', methods=['POST'])
 def user_get_token_batch_insertion():
     if not request.json or not 'user_id' in request.json:
@@ -107,7 +120,7 @@ def user_get_token_batch_insertion():
         return jsonify({'status': 0,
                         'data': ''})
 
-
+# View event: viewing every page counts as an event
 @sample.route('/api/v1/view', methods=['POST'])
 def user_page_views():
     print(request.json, file=sys.stdout)
@@ -138,7 +151,7 @@ def user_page_views():
         return jsonify({'status': 0,
                         'data': ''})
 
-
+# Button Click event
 @sample.route('/api/v1/button', methods=['POST'])
 def user_button_clicks():
     if not request.json or not 'token' in request.json:
@@ -165,7 +178,7 @@ def user_button_clicks():
         return jsonify({'status': 0,
                         'data': ''})
 
-
+# every other event except BC and V is in this category
 @sample.route('/api/v1/event', methods=['POST'])
 def user_events():
     if not request.json or not 'token' in request.json:
@@ -193,7 +206,7 @@ def user_events():
         return jsonify({'status': 0,
                         'data': ''})
 
-
+# This API works for when user sends a group of sessions and they are already being sent accumulated
 @sample.route('/api/v1/batch_insertion', methods=['POST'])
 def batch_insertion():
     batch = request.json['data']
