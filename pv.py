@@ -1,5 +1,7 @@
-
-# consumer
+'''
+page view 
+'''
+# consumer page view event
 from clickhouse_driver import Client
 from kafka import KafkaConsumer, TopicPartition
 from datetime import datetime
