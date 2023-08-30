@@ -5,7 +5,7 @@ from clickhouse_driver import Client
 from kafka import KafkaConsumer, TopicPartition
 import json
 from datetime import datetime
-client = Client(host='localhost', password='0020520107', database='V1')
+client = Client(host='localhost', password='password', database='V1')
 
 
 consumer = KafkaConsumer(
