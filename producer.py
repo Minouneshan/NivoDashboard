@@ -8,7 +8,7 @@ from kafka import SimpleProducer, KafkaClient
 from flask_clickhouse import ClickHouse
 sample = Flask(__name__)
 sample.config['CLICKHOUSE_USER'] = 'default'
-sample.config['CLICKHOUSE_PASSWORD'] = '0020520107'
+sample.config['CLICKHOUSE_PASSWORD'] = 'password'
 sample.config['CLICKHOUSE_DATABASE'] = 'V1'
 sample.config['CLICKHOUSE_HOST'] = 'localhost'
 ch = ClickHouse(sample)
